@@ -77,6 +77,22 @@
     <section class="section">
       <h1 class="title">동물상 테스트</h1>
       <h2 class="subtitle">얼굴로 보는 인공지능 동물상 테스트</h2>
+      <section
+        class="container d-flex flex-column justify-content-center align-items-center"
+      >
+        <span class="select-language">Language</span>
+        <select onchange="changeLanguage(this)" class="custom-select col-8">
+          <option value="ko" lang="ko">한국어</option>
+          <option value="en" lang="en">English</option>
+          <option value="es" lang="es">español</option>
+          <option value="ja" lang="ja">日本語</option>
+          <option value="zh" lang="zh">中文</option>
+          <option value="vi" lang="vi">tiếng Việt</option>
+          <option value="id" lang="id">Bahasa Indonesia</option>
+          <option value="it" lang="it">Italiano</option>
+          <option value="th" lang="th">ไทย</option>
+        </select>
+      </section>
       <h2 class="sr-only">
         나는 어떤 동물과 닮았을까? 나의 동물상 찾기를 해보세요!
       </h2>
@@ -375,6 +391,8 @@
           }
           var labelTitle;
           switch (prediction[i].className) {
+            case "mouse":
+              labelTitle = "쥐상";
             case "dog":
               labelTitle = "강아지상";
               break;
