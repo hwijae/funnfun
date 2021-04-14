@@ -241,17 +241,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
       let URL;
-      const urlMale =
-        "https://teachablemachine.withgoogle.com/models/o9D1N5TN/";
-      const urlFemale =
-        "https://teachablemachine.withgoogle.com/models/bB3YHn5r/";
+      const url = "https://teachablemachine.withgoogle.com/models/KjTyAs9De/";
       let model, webcam, labelContainer, maxPredictions;
       async function init() {
-        if (document.getElementById("gender").checked) {
-          URL = urlMale;
-        } else {
-          URL = urlFemale;
-        }
+        URL = url;
+
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
         model = await tmImage.load(modelURL, metadataURL);
