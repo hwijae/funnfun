@@ -1,496 +1,168 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Jua&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <title>동물상 테스트</title>
-    <meta name="title" content="동물상 테스트" />
-    <meta
-      name="subject"
-      content="얼굴로 보는 인공지능 동물상 테스트, 나와 닮은 동물상을 찾아보세요!"
-    />
-    <meta
-      name="keywords"
-      content="동물상 테스트, 인공지능 동물상 테스트, 얼굴상, 얼굴상 테스트, 나와 닮은 동물, 동물상 찾기, 얼굴로 보는 동물상, 얼굴 동물, 동물얼굴, animalface, 강아지상, 고양이상, 여우상, 사슴상, 토끼상, 곰상, 공룡상, 인공지능 동물상, AI 얼굴상, AI 동물상"
-    />
-    <meta name="author" content="조코딩" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="canonical" href="https://funandfun.site" />
-    <meta property="og:url" content="https://funandfun.site" />
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="나의 이미지와 어울리는 냄새를 MBTI를 기반으로 찾아주는 테스트입니다.">
+    <title>퍼스널 스멜 테스트</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="canonical" href="https://personalsmell.netlify.app">
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="동물상 테스트" />
-    <meta
-      property="og:description"
-      content="얼굴로 보는 인공지능 동물상 테스트, 나와 닮은 동물상을 찾아보세요! 대표 동물상 연예인 사진 데이터로 학습한 인공지능이 나의 얼굴로 동물상과 특징을 찾아드립니다. 회원가입도 필요없이 화면에서 바로 확인해보세요! 사진 데이터는 그 어디에도 전송되지 않습니다. 인공지능이 보는 나의 동물상 테스트 한번 해보세요! 강아지상? 고양이상? 여우상? 사슴상? 토끼상? 곰상? 공룡상? 얼굴상 테스트를 통해 나와 닮은 동물 찾기를 할 수 있습니다."
-    />
-    <meta
-      property="og:image"
-      content="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2Fc0eq42%2FbtqCQpiFhFn%2F8KPaOP9q8PXpJFRL7if55K%2Fimg.jpg"
-    />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script
-      type="text/javascript"
-      src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e64b3727e862b06"
-    ></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-145482737-6"
-    ></script>
+    <meta property="og:url" content="https://personalsmell.netlify.app" />
+    <meta property="og:title" content="퍼스널 스멜 테스트" />
+    <meta property="og:site_name" content="퍼스널 스멜 테스트" />
+    <meta property="og:description" content="나의 이미지와 어울리는 냄새를 MBTI를 기반으로 찾아주는 테스트입니다." />
+    <meta property="og:image" content="https://personalsmell.netlify.app/pst.jpg" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="800" />
+</head>
+<body class="container">
+    <article class="start">
+        <h6 class="mt-5 text-center" id="your_smell">내 이미지와 어울리는 냄새는 뭘까?</h6>
+        <h2 class="text-center" style="padding-bottom:none;">퍼스널 <p style="color:#eeb702; display:inline-block;">스멜</p> 테스트 <p style="font-size:14px; font-weight:normal">Personal Smell Test</p></h2>
+        <img id="main_img" class="mt-3" src="nose.webp" alt="">
+        <button id="st" type="button" class="btn btn-secondary mt-5" onclick='start()'>테스트 시작하기</button>
+    </article>
+    <article class="question mt-5">
+        <div class="progress mt-5">
+            <div class="progress-bar bg-warning" role="progressbar" style="width:calc(100/12*1%)"></div>
+        </div> 
+        <h2 id="title" class="text-center mt-5">문제</h2>
+        <input id="type" type="hidden" value="EI">
+        <button id="A" type="button" class="btn btn-secondary mt-5">Secondary</button>
+        <button id="B" type="button" class="btn btn-secondary mt-3">Secondary</button>
+    </article>
+    <article class="result">
+        <span id="re" class="text-center rounded mt-5">당신의 퍼스널 스멜은</span>
+        <span id="modifier" class="text-center mt-3">수식어</span>
+        <h2 id="smell" class="text-center">냄새</h2>
+        <img id="img" class="rounded mt-3" src="" alt="mbti">
+        <span class="mt-2 text-left" id="sub">👃🏻 나의 특징은?</span>
+        <span id="explain" class="mt-2" style="text-align:justify">설명</span>
+        
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <button id="replay" class="btn btn-secondary"><i class="fas fa-undo-alt"></i> 테스트 다시하기</button>
+                <button id="copy_link" class="btn btn-secondary"><i class="fas fa-link" style="color:rgb(54, 53, 53);"></i> 링크 복사하기</button>
+             </div>
+        </div>
+        <span id="share" class="text-center mt-3">테스트 공유하기</span>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="share mt-3 addthis_inline_share_toolbox"></div>
+        <!-- SNS버튼 시작 --> 
+    </article>
+    <article class="kakao_ad mt-5">
+        <ins class="kakao_ad_area" style="display:none;" 
+        data-ad-unit    = "DAN-CTFaqoDl6soFk6nb" 
+        data-ad-width   = "320" 
+        data-ad-height  = "100"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </article>
+    <article class="kakao_ad mt-2">
+        <ins class="kakao_ad_area" style="display:none;" 
+        data-ad-unit    = "DAN-Q2nm27hdgV8klB2g" 
+        data-ad-width   = "320" 
+        data-ad-height  = "50"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    </article>
+    <input type="hidden" id="EI" value="0">
+    <input type="hidden" id="SN" value="0">
+    <input type="hidden" id="TF" value="0">
+    <input type="hidden" id="JP" value="0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "UA-145482737-6");
+        var num = 1;
+        var q = {
+            1: {"title":"나는 기분이 안 좋을 때", "type":"EI", "A":"사람들과 만나서 놀아야 한다. <br>집에 혼자 있으면 괜히 울적해지기만 한다.", "B":"집에서 조용히 쉬고 싶다. <br>이럴 때 나가봤자 기만 빨린다."},
+            2: {"title":"내가 일을 하는 이유는", "type":"EI", "A":"이 일을 해냈을 때 <br>얻게 될 보상이 기대되기 때문이다.", "B":"이 일을 하지 않았을 때 <br>잃게 될 것들이 있기 때문이다."},
+            3: {"title":"나는 새로운 사람을 만나면", "type":"EI", "A":"어색한 침묵은 못 견디겠다. <br>무슨 말이라도 걸어 본다.", "B":"어색하더라도 누군가 말을 걸지 않으면<br> 웬만해선 먼저 말을 걸지 않는다."},
+            4: {"title":"영화관에서 재밌는 영화를 보고 나온 후", "type":"SN", "A":"재밌는 영화였다. <br>배고프니까 밥이나 먹으러 가야겠다.", "B":"여운이 가시질 않는다. <br>포털 사이트에 영화 해석을 검색해 본다."},
+            5: {"title":"나는 음악을 들을 때", "type":"SN", "A":"멜로디가 좋으면 장땡이다. <br>가사는 크게 신경쓰지 않는다.", "B":"중요한 건 가사다. <br>가사를 음미하며 노래 속 주인공으로 빙의한다."},
+            6: {"title":"길을 가다가 새로 생긴 소품샵을 발견했을 때", "type":"SN", "A":"목적지가 우선이다. 일단 가기로 한 곳부터 간다.", "B":"궁금한 건 못 참는다. <br>일단 들어가서 구경부터 하고 본다."},
+            7: {"title":"친구가 힘들게 돈 모아서 차를 샀다고 했을 때", "type":"TF", "A":"무슨 차 샀어? 얼마 줬어?", "B":"오 대박 축하해! 그 동안 고생한 보람이 있네!"},
+            8: {"title":"누군가 나를 싫어하는 걸 알았을 때", "type":"TF", "A":"싫어하든지 말든지 내가 알 바 아니다.<br>어차피 모든 사람이 나를 좋아할 순 없다.", "B":"왜 나를 싫어하지? 내가 뭘 잘못했나?<br>집에 가서도 계속 생각나고 신경쓰인다."},
+            9: {"title":"내가 실패했을 때 더 두려운 것은", "type":"TF", "A":"내가 해내지 못했다는 것에 대한 좌절감이다.", "B":"나의 실패에 대한 다른 사람들의 평판이다."},
+            10: {"title":"나는 과제를 할 때", "type":"JP", "A":"자료조사부터 발표까지 세세하게 계획부터 세운다.", "B":"일단 자료조사부터 하면서 틀을 잡아 간다."},
+            11: {"title":"친구들과 만나기로 했을 때", "type":"JP", "A":"점심은 여기서 먹고, 커피는 여기서 먹어야지...<br> 이미 머릿속에 루트를 그려 놓았다.", "B":"일단 만나서 뭘 할 지 생각해 본다."},
+            12: {"title":"여행 중 예상치 못한 일로 계획이 틀어졌을 때", "type":"JP", "A":"이건 내 계획과 어긋나는 일이다.<br> 갑자기 스트레스가 확 밀려온다.", "B":"모든 게 계획대로 흘러갈 수는 없다.<br> 그럴 수도 있다고 생각하고 넘긴다."},
+        }
+        var result = {
+            "ENFP":{"modifier":"무한 긍정 인간 비타민", "smell":"오렌지 소다 냄새", "explain":"통통 튀는 당신에겐 오렌지 소다 냄새가 나요. 인싸일 확률이 높고 어딜 가든 분위기 메이커 역할을 해요. 다른 사람들과 어울리는 것을 좋아해요. 그래도 가끔은 혼자 있고 싶을 때도 있어요. <br><br>tmi 날리는 거 즐기고 자기 얘기하는 거 좋아해요. 다른 친구들이 말하고 있을 때도, 내 얘기 할 생각에 드릉드릉해요. 내 얘기 잘 들어주는 사람 너무 좋아요. 감정을 숨기는 건 어려워요. 표정에서 다 티가 나요. 하루에도 몇 번씩 롤러코스터를 타듯이 기분이 바뀌어요. 낯간지러운 말 아무렇지 않게 잘해요. 근데 막상 본인이 그런 말을 들으면 부끄러워해요. <br><br>나만의 가치관이 확고해요. 그렇지만 누군가 맞는 말을 하거나 설득하면 잘 넘어가기도 해요. 내가 하기 싫은 일은 죽어도 하기 싫어요. 일할 때는 융통성이 좋은 편이에요. 일머리가 좋아요. 누군가 나에게 이래라 저래라 하는 건 너무 싫어요. 나에게 필요한 건 통제와 감독이 아닌, 지지와 응원이에요.", "img":"enfp.webp"},
+            "ENFJ":{"modifier":"이타적이고 마음이 따뜻한 칭찬봇", "smell":"건조기에서 막 꺼낸 <br>수건 냄새", "explain":"다정다감하고 따뜻한 당신에겐 건조기에서 막 꺼낸 수건 냄새가 나요. 사람 좋다는 소리 많이 들어요. 그런 말을 들으면 부담스럽긴 하지만 속으론 뿌듯해 해요. 다른 사람들의 장점을 잘 발견하고, 그들에게 칭찬을 아끼지 않는 편이에요. <br><br>사람들에게 도움주는 것을 좋아하고, 그들이 내 도움을 받고 잘 되는 모습을 보면 보람을 느껴요. 그치만 기브앤테이크 중요하게 여겨요. 도와줌에 대한 고마움도 모르고 발전도 없는 사람은 다신 도와주고 싶지 않아요. 사람들을 이끄는 힘이 있어요. 팀원보다는 리더가 어울려요. 팀원일 경우에는 중요한 일을 도맡아 하는 경우가 많아요. <br><br>의사소통 능력과 언변 능력이 좋아서 남을 설득하는 일도 잘해요. 지적인 사람 좋아해요. 그런 사람과 철학적인 대화를 나누는 건 더 좋아해요. 인권문제, 환경문제, 동물문제 등 사회적 문제에 관심이 많아요. 정의로운 편이에요. 누군가 억울한 일을 당하거나 약자 괴롭히는 꼴을 보면 그냥은 못 지나쳐요.", "img":"enfj.webp"},
+            "INFJ":{"modifier":"사람의 심리를 꿰뚫어 보는 통찰가", "smell":"깊이 우러난 홍차 냄새", "explain":"알면 알수록 진국인 당신에겐 깊이 우러난 홍차 냄새가 나요. 자아성찰 자주하고 생각도 많아요. 생각이 많아서 생각이 꼬리에 꼬리를 물고 늘어지기도 해요. 공감능력 뛰어나요. 주변 사람들의 고민상담소예요. 누굴 만나느냐에 따라 모습이 휙휙 바뀌어요. <br><br>통찰력이 뛰어난 편이에요. 주위 사람들 본인도 모르는 특징이나 심리를 꿰뚫고 있어요. 큰 그림을 체계화시키는 능력이 있어요. 은근히 뒤끝 있어요. 그걸 겉으로 티는 안내지만 속으로는 아주 예전 일도 세세하게 기억하고 있어요. <br><br>이상을 꿈꾸지만 한편으로는 굉장히 현실적이에요. 어차피 이상은 말 그대로 이상일 뿐이라고 생각해요. 굉장히 계획적이에요. 모든 일정은 스케쥴러에 기록되어 있어요. 눈치 많이 보고 그만큼 눈치도 빨라요. 그래서 일부러 눈치 없는 척할 때도 많아요. 내면이 단단해서 주변에 쉽게 휘둘리지 않아요.", "img":"infj.webp"},
+            "INFP":{"modifier":"고차원의 감수성을 지닌 이상주의자", "smell":"봄 바람 냄새", "explain":"뛰어난 감수성을 지닌 당신에겐 부들부들한 봄 바람 냄새가 나요. 나만의 독특한 감수성이 있어요. 분위기에 살고 분위기에 죽어요. 감성 빼면 시체예요. 하트 시그널 음악감독 시켜주면 잘 할 자신 있어요. 내가 추천해 준 음악 별로라고 하면 왠지 자존심 상해요. <br><br>혼자 있는 거 좋아해요. 약속 나가는 거 너무 귀찮아요. 그런데 막상 나가면 누구보다 재밌게 놀아요. 주목받는 거 싫어하지만 누군가 관심을 주면 은근히 좋아해요. 뭐 하나에 꽂히면 주변 사람들도 다 알 정도로 집요하게 그것만 파는 편이에요. <br><br>게으른 완벽주의자예요. 일을 시작하기까지 오래 걸리지만 일단 시작하면 완벽하게 해내야 직성이 풀려요. 자신에 대해 탐구하는 것을 좋아해요. 그래서 이런 테스트를 제일 좋아하는 유형이기도 해요. 상상력이 풍부해요. 자기 전에 하는 망상을 영화로 만들었으면 이미 수백편 정도는 될 거예요.", "img":"infp.webp"},
+            "INTJ":{"modifier":"차분하고 냉철하게 미래를 설계하는 설계자", "smell":"새벽 공기 냄새", "explain":"차분하고 논리적인 당신에겐 새벽 공기 냄새가 나요. 첫인상이 차가워 보이는 사람이 많아요. 이 세상에서 제일 중요한 건 나 자신이에요. 아무리 사랑하는 사람이라도 나의 일에 방해가 되면 거리를 둬요. <br><br>생각은 많은데 겉으로 드러내질 않아서 주변에서 속을 잘 모르겠다는 말을 듣곤 해요. 하지만 마음을 연 사람 앞에서는 180도 다른 모습을 보여줘요. 가끔 감정 없는 로봇처럼 보이기도 하지만, 의외로 속은 여려요. 한 번 상처받으면 오래가는 편이에요. 프로 시뮬레이션러예요. 어떤 일을 하기 전에 머릿속으로 분 단위로 계획을 세우고 시뮬레이션을 돌려봐요. <br><br>먼저 연락 잘 안해요. 그래서 종종 친구나 연인이 서운함을 토로하기도 해요. 시덥잖은 가십거리 얘기하는 거 시간 낭비라고 생각해요. 기본적으로 남에게 관심이 없어서 다른 사람과 자신을 비교하지 않아요. 그래서 열등감을 느낀 적은 극히 드물어요.", "img":"intj.webp"},
+            "INTP":{"modifier":"마이너한 취향을 가진 걸어다니는 지대넓얕", "smell":"오래된 책 냄새", "explain":"넓고 얕은 지식이 많은 당신에겐 오래된 책 냄새가 나요. 남들보다 하나 더 알아야 직성이 풀리고, 남들이 아는 걸 내가 모르는 건 정말 자존심 상하는 일이에요. 그렇다고 학문을 깊이 있게 파는 건 아니에요. 너는 어떻게 그런 걸 알아? 이런 소리 들으면 겉으론 시크한 척 하지만 속으론 한껏 우쭐해져요. <br><br>소수의 친구와 깊고 좁은 관계를 유지하는 걸 선호해요. 왁자지껄한 술자리는 내 스타일 아니에요. 리액션 잘 못하는 편이라 괜히 어색한 웃음을 지을 때가 많아요. 본인 기준 말이 안통할 것 같다고 여겨지는 사람이랑은 대화 안해요. 그냥 무시하는 게 낫다고 생각해요. <br><br>컨셉질 장인이에요. 하지만 내가 컨셉질하는 걸 다른 사람이 알아채면 절대 안돼요. 다른 타입보다 자기 객관화를 잘 하는 편이에요. 그만큼 남도 객관적으로 보는 편이에요. 맺고 끊음이 확실해요. 평소에 좋아하던 사람이라도 한순간에 정떨어진 적 꽤 있어요. 의외로 감성적인 면도 있어요.", "img":"intp.webp"},
+            "ENTJ":{"modifier":"플랜C까지 다 계획하고 있는 야망가", "smell":"솔방울 냄새", "explain":"야망이 큰 당신에겐 울창한 소나무 숲의 솔방울 냄새가 나요. 자신만만함과 당당함은 이 타입의 베이스예요. 그러기 위해 끊임 없이 자기계발에 힘써요. 첫인상이 무섭다는 말을 많이 들어요. 하지만 알고 보면 정이 많아서 주변 사람들을 잘 챙겨요. <br><br>나에게도 남에게도 엄격한 편이에요. 본인만의 도덕적 기준이 확고해서 그 기준을 벗어나는 사람과는 논쟁도 마다하지 않아요. 그래서 기성세대와 가장 충돌이 많은 타입이기도 해요. 야망과 포부가 커요. 해야겠다고 마음 먹은 일은 반드시 해내요. 목표 달성을 위한 플랜C까지 계획하고 있어요. 쉬운 일보다는 어렵고 복잡하더라도 큰 성과를 낼 수 있는 일을 더 좋아해요. <br><br>사람들 앞에서 발표하고, 본인의 의견을 피력하는 걸 좋아하고 잘해요. 팀프로젝트의 하드캐리어예요. 할 말은 꼭 해야 해요. 굉장히 직설적인 타입이라 다른 사람들에게 본의 아니게 상처를 줄 때도 있어요.", "img":"entj.webp"},
+            "ENTP":{"modifier":"세상에서 지는 게 제일 싫은 프로논쟁러", "smell":"열대과일 칵테일 냄새", "explain":"솔직하고 뜨거운 당신에겐 열대과일 칵테일 냄새가 나요. 솔직함을 빼곤 이 타입을 논할 수 없어요. 자존심도 세고 자존감도 높아요. 친화력도 굉장해요. 연령불문 성별불문 누구와도 쉽게 대화를 풀어갈 수 있어요. 사회생활 만렙이에요. 친구는 많지만 진짜 친구라고 생각하는 사람은 몇 명 없어요. <br><br>틀에 박힌 거 싫어해요. 누군가 구시대적 발언이나 말도 안 되는 소리를 하면 어떻게 해서든 그 생각을 뜯어 고쳐주고 싶어져요. 다른 사람 웃겨주는 거 좋아해요. 웃기다는 말 들으면 쾌감을 느껴요. 나에 대한 다른 사람들의 평가는 한 귀로 듣고 한 귀로 흘려요. 그렇지만 잘난 나의 가치를 못 알아보는 건 납득할 수 없어요. <br><br>일을 할 때 효율성과 합리성을 잘 따져요. 상황에 맞게 유연하게 대처하는 편이에요. 그래서 융통성 없는 사람이랑 같이 일하면 속이 터져요. 고민이나 걱정은 길게 안해요. 그 시간에 최선의 해결방안을 찾아 내는 게 효율적이라고 생각해요. ", "img":"entp.webp"},
+            "ISFJ":{"modifier":"겸손하고 온화한 원칙주의자", "smell":"영화관 팝콘 냄새", "explain":"겉은 순해보이지만 속은 단단한 당신에겐 팝콘 냄새가 나요. 외유내강 타입이에요. 주위 사람들에게 착하다는 말 많이 들어요. 굉장히 꼼꼼해요. 기억력도 대단히 좋은 편이에요. 과거의 일도 생생하게 기억하고 있는 경우가 많아요. 흑역사까지 생생하게 기억나서 괴로울 때도 있어요. <br><br>남이 나를 어떻게 볼 지 의식을 많이 하는 편이에요. 그래서 많은 사람이 모이는 외부 활동 후에는 에너지 소모가 심해요. 혼자만의 시간을 통한 충전이 필요해요. 불확실한 일은 싫어요. 정확한 가이드라인이 있는 곳에서 일하는 것을 선호해요. 딱 공무원 체질이에요. 안정적이고 익숙한 게 좋아요. 요령 피우는 거 잘 못해요. <br><br>내가 해준 만큼 해 주는 사람에게 감동 받아요. 공감능력이 좋고, 다른 사람의 감정을 잘 캐치해요. 많은 사람들이 이 타입의 사람을 신뢰하지만, 이 타입에게 신뢰를 얻는 데까진 많은 시간이 걸릴지도 몰라요. ", "img":"isfj.webp"},
+            "ESFP":{"modifier":"평화를 사랑하는 낙천주의자", "smell":"초콜릿 컵케이크 냄새", "explain":"매력 부자인 당신에겐 무지갯빛 크림을 올린 초콜릿 컵케이크 냄새가 나요. 새로운 환경에 빨리 적응하고 새로운 사람을 만나는 건 언제든지 환영이에요. 주변에서 밝고 재밌다는 말 많이 들어요. 특히 연장자들의 사랑을 많이 받아요. 낯 가린다고 말하면 주변에서 안 믿어줘요. 집순이지만 오랫동안 사람을 안 만나면 우울해져요. <br><br>경쟁 싫어하고 싫은 소리 잘 못해요. 논쟁보단 평화가 좋아요. 귀찮아서 지속적으로 하는 거 잘 못해요. 그래서 결말까지 본 드라마는 손에 꼽을 정도예요. 주변 사람들에게 선물하는 거 좋아해요. 말할 때 표정이 다양하고 몸짓도 커요. 금사빠, 금사식이에요. 흥이 많아서 뜬금없이 춤추거나 노래부를 때가 많아요. <br><br>사고 싶은 게 생기면 충동적으로 사는 편이에요. 남 부탁은 잘 들어주지만, 정작 누군가에게 부탁하는 건 어려워해요. 다른 사람 의견에 웬만하면 잘 따라주는 편이에요. 될대로 되겠지라는 생각 자주해요. 야망을 좇는 것보단 소소하더라도 행복하게 사는 게 더 중요해요.  ", "img":"esfp.webp"},
+            "ISFP":{"modifier":"배려 넘치는 소심한 관종", "smell":"갓 구운 식빵 냄새", "explain":"속에 뭐가 들어있는지 궁금하게 만드는 당신에겐 갓 구운 식빵 냄새가 나요. 스스로는 안 착하다고 생각하는데 사람들은 착하다고 해요. 일은 미룰 수 있을 때까지 미뤄요. 그렇다고 기한을 넘기는 건 아니에요. 집순이예요. 집에 있을 때는 침대 위에서 볼 일 보는 것 외의 모든 걸 할 수 있어요. <br><br>내성적인 편이지만 친한친구들은 외향적인 경우가 많아요. 배려심이 깊고 양보를 잘해요. 조용한 관종이에요. 관심받는 거 싫은데 좋아요. 다른 사람한테 속마음 얘기 잘 안해요. 그치만 인간관계에 신경 많이 써요. 결정 잘 못해요. 주변 의견이나 분위기를 따라가는 편이에요. <br><br>칭찬은 나를 춤추게 해요. 누군가 나를 칭찬해주면 머쓱해하지만 속으론 더 칭찬해주길 바라요. 전화보단 문자나 카톡이 편해요. 새로운 사람 사귀는 거에 큰 관심 없어요. 고집 세요. 그런데 고집쟁이처럼 비춰지는 건 싫어요. 현재를 즐길 줄 아는 사람이에요. 자신을 내세우지 않아요.  ", "img":"isfp.webp"},
+            "ESFJ":{"modifier":"사교성 갑 만인의 친구", "smell":"쿠키 굽는 냄새", "explain":"만인의 친구인 당신에겐 크리스마스 파티에서 쿠키 굽는 냄새가 나요. 모난 편 없이 둥글둥글한 성격이라 항상 주변에 사람이 많아요. 상대방을 편안하게 만들어주는 타입이에요. 공감능력 좋아서 상담도 잘해줘요. 무조건적인 공감보단 해결책도 같이 제시해주는 편이에요. 그런데 가끔 영혼 없는 리액션 할 때도 있어요. <br><br>이성과 감성이 적절히 섞인 유형이라고 할 수 있어요. 친절한 편이고 화도 거의 안내지만, 한번 화내면 무서울 정도로 화내요. 약속 시간 칼같이 지켜요. 남 신경 많이 쓰는 편이에요. 본인이 어떤 말이나 행동을 했을 때 주변에서 어떻게 볼 지 항상 생각하고 행동하기 때문에 이미지 관리에 능해요.<br><br>집에만 있으면 좀이 쑤셔요. 선의의 거짓말처럼 마음에도 없는 말 잘해요. 말하는 거 좋아하지만 속에 있는 깊숙한 이야기는 잘 안해요. 주로 일상적인 얘기나 썰 푸는 걸 좋아해요. 다른 사람 잘 챙겨요. 책임감이 강해서 본인이 내뱉은 말에 대한 책임은 끝까지 져요 ", "img":"esfj.webp"},
+            "ISTJ":{"modifier":"칼 같은 원리원칙주의자", "smell":"빳빳한 새 지폐 냄새", "explain":"철저한 당신에겐 빳빳한 새 지폐 냄새가 나요. 자기 앞가림 알아서 잘해요. 실 없는 소리 잘 안해요. 다른 사람에게 민폐 끼치는 거 극도로 싫어요. 목적지 없이 돌아다니는 거 싫어해요. 감정의 동요가 크게 없는 편이에요. 그래서 그런지 무뚝뚝하다는 말 자주 들어요. <br><br>물건 하나를 사더라도 제품 설명이나 리뷰를 꼭 보고 사요. 정리정돈이 항상 잘 되어 있고 깔끔해요. 보수적인 편이에요. 스펙타클한 삶보다 잔잔하고 고요한 삶이 더 좋아요. 과정보단 결과를 중요하게 생각해요. 지금까지 경험한 것을 토대로 세상을 바라봐요. 그래서 창의적인 일은 적성에 안 맞아요. 경험해보지 않은 일에 대해 알아서 하라는 지시를 받으면 어떻게 해야 할 지 잘 모르겠어요.<br><br>새로운 시도나 모험은 별로 즐기지 않아요. 스스로 정해놓은 삶의 기준 속에서 규칙적으로 살아가요. 그 기준은 웬만하면 깨지지 않아요. 다른 사람이 뭘 하든 관심없고, 남들이 나에게 관심가지는 것도 바라지 않아요. ", "img":"istj.webp"},
+            "ESTP":{"modifier":"뒤끝 없는 자기애 끝판왕", "smell":"불타는 장작 냄새", "explain":"추진력 강한 당신에겐 불타는 장작 냄새가 나요. 행동력 있는 당신은 일단 해보고 보는 스타일이에요. 사소한 일에 신경 별로 안써요. 상사한테 혼나도, 친구랑 싸워도 금방 잊어요. 감정을 안 숨겨요. 그때그때 다 표출하는 편이에요. 감정을 쌓아두는 건 나와 거리가 먼 얘기예요. 그래서 뒤끝도 없어요. <br><br>환불원정대의 대장같은 느낌이에요. 환불도 잘하고 컴플레인도 잘 걸어요. 리액션을 하긴 하는데 영혼 없다는 말 자주 들어요. 미래의 나는 잘먹고 잘살고 있겠지라는 막연한 믿음이 있어요. 즉흥적인 편이라 갑자기 잡는 약속 좋아해요. 임기응변에 능해서 면접에 강해요. <br><br>원하는 게 있더라도 다른 사람 이용해 먹는 짓은 안해요. 빙빙 둘러 말하는 거 싫어해요. 정확하고 간결하게 말해주는 게 좋아요. 답답한 사람, 음침한 사람 극혐해요. 정 없어 보여도 알고보면 좋아하는 사람들에게만큼은 잘 퍼주는 스타일이에요. 독립적이고 남한테 의지하지 않아요.  ", "img":"estp.webp"},
+            "ISTP":{"modifier":"마이웨이 만사 귀차니스트", "smell":"검정색 서류가방 냄새", "explain":"냉소적인 당신에겐 각잡힌 검정 서류가방 냄새가 나요. 만사 귀찮아요. 밖에 나가는 건 엄청난 에너지를 소모하는 일이에요. 그래서 한 번 나갈때 모든 일을 몰아서 처리해요. 스몰토크 안 좋아해요. 쇼핑할 때 직원이 말 좀 안 걸어줬으면 좋겠어요. <br><br>순수한 궁금증으로 왜? 라는 질문 많이 해요. 매사 담담해서 애늙은이같단 말 많이 들어요. 팩트폭력을 잘 해요. 하지만 본인은 사실을 말했을 뿐, 팩폭이라고 생각하지 않아요. 유행에 둔감해요. 남들 다 할 때 안하고 뒷북치는 경우가 많아요. 뭔가에 하나 꽂히면 아낌 없이 소비해요. 가령 캠핑에 빠지면 캠핑에 관련된 물건은 일단 다 사들이고 봐요.<br><br> 허세 부릴 줄 몰라요. 소탈한 편이고 자기자랑 거의 안 해요. 남들이 봤을 땐 쿨해 보이지만 은근히 눈치 많이 봐요. 오글거리는 말 못해요. 누군가 나에게 간섭하면 어쩌라고 싶어요. 징징대는 사람들 싫어요. 말보다는 행동을 중요시해요.", "img":"istp.webp"},
+            "ESTJ":{"modifier":"부지런한 완벽주의자", "smell":"만년필 펜촉 냄새", "explain":"날카롭고 정확한 당신에겐 만년필 펜촉 냄새가 나요. 성공에 대한 갈망이 커요. 현실적이고 건설적인 대화 좋아해요. 뜬구름 잡는 얘기는 이해도 안되고 공감은 더 안돼요. 배울 점 없는 사람은 친구로도 두고 싶지 않아요. <br><br>자기주장이 강해요. 옳다고 생각하는 건 밀어붙이는 편이에요. 그치만 논리적으로 타당한 반박은 수용하는 편이에요. 다만, 반대를 위한 반대나 비꼬는 건 용납할 수 없어요. 자기 관리에 철저해요. 술을 마셔도 흐트러진 모습을 보여주는 일은 거의 없어요. <br><br>항상 부지런히 움직여요. 집에서도 책을 읽거나 청소를 하거나 요리를 하는 등 항상 할 일이 있어요. 눈물 별로 없어요. 외로움도 잘 안 타요. 내 사전에 만약에란 없어요. 맞으면 맞는 거고 아니면 아닌 거예요. 집요한 면이 있어서 궁금한 건 논문을 뒤져서라도 무조건 알아내야 해요. 일 중독이고, 또 일을 잘해요. 일 못하는 사람 지켜보는 건 고통스러운 일이에요. 차라리 총대 메고 내가 하는 게 속편해요.", "img":"estj.webp"},
+        }
+        function start(){
+            $(".start").hide();
+            $(".question").show();
+            next();
+        }
+        $("#A").click(function(){
+            var type = $("#type").val();
+            var preValue = $("#" + type).val();
+            $("#" + type).val(parseInt(preValue)+1);
+            next();
+        });
+        $("#B").click(function(){
+            next();
+        });
+        function next(){
+            if(num == 13){
+                $(".question").hide();
+                $(".result").show();
+                var mbti = "";
+                ($("#EI").val() < 2) ? mbti += "I" : mbti += "E";
+                ($("#SN").val() < 2) ? mbti += "N" : mbti += "S";
+                ($("#TF").val() < 2) ? mbti += "F" : mbti += "T";
+                ($("#JP").val() < 2) ? mbti += "P" : mbti += "J";
+                $("#modifier").html(result[mbti]["modifier"]);
+                $("#smell").html(result[mbti]["smell"]);
+                $("#img").attr("src", result[mbti]["img"]);
+                $("#explain").html(result[mbti]["explain"]);
+            }else{
+                $(".progress-bar").attr('style','width:calc(100/12*'+ num +'%)')
+                $("#title").html(q[num]["title"]);
+                $("#type").val(q[num]["type"]);
+                $("#A").html(q[num]["A"]);
+                $("#B").html(q[num]["B"]);
+                num++;
+            }
+        }
+        $("#replay").click(function(){
+            window.location.replace("https://personalsmell.netlify.app");
+        })
+        function copyToClipboard(val) {
+            var t = document.createElement("textarea");
+            document.body.appendChild(t);
+            t.value = val;
+            t.select();
+            document.execCommand('copy');
+            document.body.removeChild(t);
+            }
+            $('#copy_link').click(function() {
+            copyToClipboard('https://personalsmell.netlify.app');
+            alert('링크가 복사되었어요!');
+        });
     </script>
-  </head>
-
-  <body>
-    <nav class="p-3 container navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="https://funandfun.site/">동물상 테스트</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >동물상 테스트
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <section class="section">
-      <h1 class="title">동물상 테스트</h1>
-      <h2 class="subtitle">얼굴로 보는 인공지능 동물상 테스트</h2>
-      <h2 class="sr-only">
-        나는 어떤 동물과 닮았을까? 나의 동물상 찾기를 해보세요!
-      </h2>
-      <h3 class="sr-only">
-        대표 동물상 연예인 사진 데이터로 학습한 인공지능이 나의 얼굴로 동물상과
-        특징을 찾아드립니다.
-      </h3>
-      <h4 class="sr-only">
-        본 서비스는 Google의 인공지능 teachable machine 2.0을 활용하였습니다.
-      </h4>
-      <p class="sr-only">
-        얼굴로 보는 인공지능 동물상 테스트, 나와 닮은 동물상을 찾아보세요! 대표
-        동물상 연예인 사진 데이터로 학습한 인공지능이 나의 얼굴로 동물상과
-        특징을 찾아드립니다. 회원가입도 필요없이 화면에서 바로 확인해보세요!
-        사진 데이터는 그 어디에도 전송되지 않습니다. 인공지능이 보는 나의 동물상
-        테스트 한번 해보세요! 강아지상? 고양이상? 여우상? 사슴상? 토끼상? 곰상?
-        공룡상? 얼굴상 테스트를 통해 나와 닮은 동물 찾기를 할 수 있습니다.
-      </p>
-    </section>
-
-    <script
-      class="jsbin"
-      src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
-    ></script>
-    <div class="mt-3 container file-upload">
-      <div class="image-upload-wrap">
-        <input
-          class="file-upload-input"
-          type="file"
-          onchange="readURL(this);"
-          accept="image/*"
-        />
-        <div class="drag-text">
-          <img src="img/upload.svg" class="mt-5 pt-5 upload" />
-          <h3 class="mb-5 pb-5 pt-4 upload-text">
-            얼굴 사진을 올려놓거나 눌러서 업로드하세요!
-          </h3>
-        </div>
-      </div>
-      <div class="file-upload-content">
-        <img
-          class="file-upload-image"
-          id="face-image"
-          src="#"
-          alt="your image"
-        />
-        <div id="loading" class="animated bounce">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-          <p class="text-center">AI가 당신의 동물상을 분석중입니다.</p>
-        </div>
-        <p class="result-message"></p>
-        <div
-          id="label-container"
-          class="d-flex flex-column justify-content-around"
-        ></div>
-        <div id="addThis" class="addthis_inline_share_toolbox_6lz1"></div>
-
-        <div class="pt-3 image-title-wrap">
-          <button
-            type="button p-2"
-            class="try-again-btn"
-            onclick="gaReload1();"
-            data-toggle="modal"
-            data-target="#adModal"
-          >
-            <span class="try-again-text">다른 사진으로 재시도</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <script
-      type="text/javascript"
-      src="//t1.daumcdn.net/kas/static/ba.min.js"
-      async
-    ></script>
-    <script
-      type="text/javascript"
-      src="//t1.daumcdn.net/kas/static/ba.min.js"
-      async
-    ></script>
-
-    <div class="container pt-3">
-      <div id="disqus_thread"></div>
-    </div>
-    <footer class="footer pt-5 container d-flex justify-content-center">
-      <div>
-        <p>&copy; Inspired by JoCoding. All Rights Reserved.</p>
-        <!--            
-        <ul class="list-inline d-flex justify-content-center">
-            <li class="list-inline-item">
-                <a href="https://developerdk.tistory.com/46">Privacy</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="https://developerdk.tistory.com/47">Terms</a>
-            </li>
-            <li class="list-inline-item">
-                <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg">FAQ</a>
-            </li>
-        </ul>
--->
-      </div>
+ 
+        </p>
     </footer>
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="adModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="adModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="adModalLabel">
-              (AD)광고 - 재시도를 한번 더 눌러주세요.
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body d-flex justify-content-center">
-            <ins
-              class="kakao_ad_area"
-              style="display: none"
-              data-ad-unit="DAN-t89oh3sc0ew5"
-              data-ad-width="300"
-              data-ad-height="250"
-            ></ins>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button
-              type="button p-2"
-              class="try-again-btn"
-              onclick="gaReload2();"
-            >
-              <span class="try-again-text">다른 사진으로 재시도</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      function gaReload1() {
-        gtag("event", "다른 사진으로 재시도 1차", {
-          event_category: "다른 사진으로 재시도",
-        });
-      }
-      function gaReload2() {
-        gtag("event", "다른 사진으로 재시도 2차", {
-          event_category: "다른 사진으로 재시도",
-        });
-        window.location.reload();
-      }
-    </script>
-    <script>
-      (function () {
-        var d = document,
-          s = d.createElement("script");
-        s.src = "https://funnfun.disqus.com/embed.js";
-        s.setAttribute("data-timestamp", +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    </script>
-    <noscript
-      >Please enable JavaScript to view the
-      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-    <script>
-      function readURL(input) {
-        if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $(".image-upload-wrap").hide();
-            $("#loading").show();
-            $(".file-upload-image").attr("src", e.target.result);
-            $(".file-upload-content").show();
-            $(".image-title").html(input.files[0].name);
-          };
-          reader.readAsDataURL(input.files[0]);
-          init().then(function () {
-            console.log("hello");
-            predict();
-            $("#loading").hide();
-          });
-        } else {
-          removeUpload();
-        }
-      }
-
-      function removeUpload() {
-        $(".file-upload-input").replaceWith($(".file-upload-input").clone());
-        $(".file-upload-content").hide();
-        $(".image-upload-wrap").show();
-      }
-      $(".image-upload-wrap").bind("dragover", function () {
-        $(".image-upload-wrap").addClass("image-dropping");
-      });
-      $(".image-upload-wrap").bind("dragleave", function () {
-        $(".image-upload-wrap").removeClass("image-dropping");
-      });
-    </script>
-    <script type="text/javascript">
-      let URL = "https://teachablemachine.withgoogle.com/models/KjTyAs9De/";
-      let model, webcam, labelContainer, maxPredictions;
-      async function init() {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-        labelContainer = document.getElementById("label-container");
-        for (let i = 0; i < maxPredictions; i++) {
-          var element = document.createElement("div");
-          element.classList.add("d-flex");
-          labelContainer.appendChild(element);
-        }
-      }
-      async function predict() {
-        var image = document.getElementById("face-image");
-        const prediction = await model.predict(image, false);
-        prediction.sort(
-          (a, b) => parseFloat(b.probability) - parseFloat(a.probability)
-        );
-        console.log(prediction[0].className);
-        var resultTitle, resultExplain, resultCeleb;
-
-        var title =
-          "<div class='" +
-          prediction[0].className +
-          "-animal-title'>" +
-          resultTitle +
-          "</div>";
-        var explain =
-          "<div class='animal-explain pt-2'>" + resultExplain + "</div>";
-        var celeb =
-          "<div class='" +
-          prediction[0].className +
-          "-animal-celeb pt-2 pb-2'>" +
-          resultCeleb +
-          "</div>";
-        $(".result-message").html(title + explain + celeb);
-        var barWidth;
-        for (let i = 0; i < maxPredictions; i++) {
-          if (prediction[i].probability.toFixed(2) > 0.1) {
-            barWidth =
-              Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
-          } else if (prediction[i].probability.toFixed(2) >= 0.01) {
-            barWidth = "4%";
-          } else {
-            barWidth = "2%";
-          }
-          var labelTitle;
-          switch (prediction[i].className) {
-            case "mouse":
-              labelTitle = "쥐상";
-              break;
-            case "catfish":
-              labelTitle = "메기상";
-              break;
-            case "anchovies":
-              labelTitle = "멸치상";
-              break;
-            case "blowfish":
-              labelTitle = "복어상";
-              break;
-            case "shark":
-              labelTitle = "상어상";
-              break;
-            case "toad":
-              labelTitle = "두꺼비상";
-              break;
-            case "frog":
-              labelTitle = "개구리상";
-              break;
-            case "turtle":
-              labelTitle = "거북이상";
-              break;
-            case "wolf":
-              labelTitle = "늑대상";
-              break;
-            case "bear":
-              labelTitle = "곰상";
-              break;
-            case "deer":
-              labelTitle = "사슴상";
-              break;
-            case "racoon":
-              labelTitle = "너구리상";
-              break;
-            case "fox":
-              labelTitle = "여우상";
-              break;
-            case "lion":
-              labelTitle = "사자상";
-              break;
-            case "dog":
-              labelTitle = "강아지상";
-              break;
-            case "cat":
-              labelTitle = "고양이상";
-              break;
-            case "rabbit":
-              labelTitle = "토끼상";
-              break;
-            case "dinosaur":
-              labelTitle = "공룡상";
-              break;
-            case "pig":
-              labelTitle = "돼지상";
-              break;
-            case "shih tzu":
-              labelTitle = "시츄상";
-              break;
-            case "chihuahua":
-              labelTitle = "치와와상";
-              break;
-            case "gorilla":
-              labelTitle = "고릴라상";
-              break;
-            case "monkey":
-              labelTitle = "원숭이상";
-              break;
-            case "sheep":
-              labelTitle = "양상";
-              break;
-            case "horse":
-              labelTitle = "말상";
-              break;
-            case "snake":
-              labelTitle = "뱀상";
-              break;
-            case "dragon":
-              labelTitle = "용상";
-              break;
-            case "tiger":
-              labelTitle = "호랑이상";
-              break;
-            case "cow":
-              labelTitle = "소상";
-              break;
-            case "squirrel":
-              labelTitle = "다람쥐상";
-              break;
-            default:
-              labelTitle = "알수없음";
-          }
-          var label =
-            "<div class='animal-label d-flex align-items-center'>" +
-            labelTitle +
-            "</div>";
-          var bar =
-            "<div class='bar-container position-relative container'><div class='" +
-            prediction[i].className +
-            "-box'></div><div class='d-flex justify-content-center align-items-center " +
-            prediction[i].className +
-            "-bar' style='width: " +
-            barWidth +
-            "'><span class='d-block percent-text'>" +
-            Math.round(prediction[i].probability.toFixed(2) * 100) +
-            "%</span></div></div>";
-          labelContainer.childNodes[i].innerHTML = label + bar;
-        }
-      }
-    </script>
-  </body>
-  <!-- 
-image input box
-Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-gender toggle
-Copyright (c) 2020 by Mert Cukuren (https://codepen.io/knyttneve/pen/bPpEZY)
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- -->
+</body>
 </html>
